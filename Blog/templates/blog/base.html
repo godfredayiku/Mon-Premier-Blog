@@ -13,17 +13,24 @@
 	<body>
 		<header class="page-header">
 			<div class="container">
-				<h1><a href="/">Le Blog Django</a></h1>
+				{% if user.is_authenticated %}
+				<h1>
+					<a href="{% url 'post_new' %} class='top_menu'">
+						Le Blog Django
+						{% include './icons/file-earmark-plus.svg' %}
+					</a>
+				</h1>
+				{% endif %}
 			</div>
 		</header>
 
 		<main class="container">
-		<div class="row">
-		<div class="col">
-			{% block content %}
-			{% endblock %}
-		</div>
-		</div>
+			<div class="row">
+				<div class="col">
+					{% block content %}
+					{% endblock %}
+				</div>
+			</div>
 		</main>
 	</body>
 </html>
